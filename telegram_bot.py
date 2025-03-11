@@ -67,31 +67,31 @@ async def get_product_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     )
     return PRODUCT_QUANTITY
 
-# Mahsulot miqdorini olish
-async def get_product_quantity(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    text = update.message.text
+# # Mahsulot miqdorini olish
+# async def get_product_quantity(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+#     text = update.message.text
     
-    if text == '❌ Bekor qilish':
-        await update.message.reply_text(
-            "Mahsulot qo'shish bekor qilindi.", 
-            reply_markup=get_main_keyboard()
-        )
-        return ConversationHandler.END
+#     if text == '❌ Bekor qilish':
+#         await update.message.reply_text(
+#             "Mahsulot qo'shish bekor qilindi.", 
+#             reply_markup=get_main_keyboard()
+#         )
+#         return ConversationHandler.END
     
-    try:
-        quantity = float(text)
-        context.user_data['product_quantity'] = quantity
-        await update.message.reply_text(
-            "Mahsulot narxini kiriting (faqat raqamlar):",
-            reply_markup=ReplyKeyboardMarkup([['❌ Bekor qilish']], resize_keyboard=True)
-        )
-        return PRODUCT_PRICE
-    except ValueError:
-        await update.message.reply_text(
-            "Iltimos, faqat raqamlarni kiriting. Qaytadan urinib ko'ring:",
-            reply_markup=ReplyKeyboardMarkup([['❌ Bekor qilish']], resize_keyboard=True)
-        )
-        return PRODUCT_QUANTITY
+#     try:
+#         quantity = float(text)
+#         context.user_data['product_quantity'] = quantity
+#         await update.message.reply_text(
+#             "Mahsulot narxini kiriting (faqat raqamlar):",
+#             reply_markup=ReplyKeyboardMarkup([['❌ Bekor qilish']], resize_keyboard=True)
+#         )
+#         return PRODUCT_PRICE
+#     except ValueError:
+#         await update.message.reply_text(
+#             "Iltimos, faqat raqamlarni kiriting. Qaytadan urinib ko'ring:",
+#             reply_markup=ReplyKeyboardMarkup([['❌ Bekor qilish']], resize_keyboard=True)
+#         )
+#         return PRODUCT_QUANTITY
 
 # Mahsulot narxini olish
 async def get_product_price(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -114,12 +114,12 @@ async def get_product_price(update: Update, context: ContextTypes.DEFAULT_TYPE) 
         # Mahsulot ma'lumotlarini saqlash
         user_data_dict[user_id].append({
             'nomi': product_name,
-            'miqdori': product_quantity,
+            # 'miqdori': product_quantity,
             'narxi': price
         })
         
         await update.message.reply_text(
-            f"✅ Mahsulot qo'shildi!\n\n🏷️ Nomi: {product_name}\n📊 Miqdori: {product_quantity}\n💰 Narxi: {price}",
+            f"✅ Mahsulot qo'shildi!\n\n🏷️ Nomi: {product_name}\n💰 Narxi: {price}",
             reply_markup=get_main_keyboard()
         )
         return ConversationHandler.END
@@ -192,7 +192,7 @@ async def handle_button_messages(update: Update, context: ContextTypes.DEFAULT_T
 
 def main() -> None:
     # Bot tokenini shu yerga kiriting
-    application = Application.builder().token("7874844736:AAEQxYsciw6y3hJXXq052udb14Ig7el20eU").build()
+    application = Application.builder().token("8126996910:AAGcidCXkjc53ONoGv681Q_c4jEDdQwDvOc").build()
     
     # Suhbat oqimi uchun handler
     conv_handler = ConversationHandler(
