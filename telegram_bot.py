@@ -202,7 +202,7 @@ def main() -> None:
         ],
         states={
             PRODUCT_NAME: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_product_name)],
-            PRODUCT_QUANTITY: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_product_quantity)],
+            # PRODUCT_QUANTITY: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_product_quantity)],
             PRODUCT_PRICE: [MessageHandler(filters.TEXT & ~filters.COMMAND, get_product_price)],
         },
         fallbacks=[
